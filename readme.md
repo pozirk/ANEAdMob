@@ -28,41 +28,42 @@ Add the following lines to your AIR Aplication-app.xml file inside &lt;manifestA
 
 
 # Example
-import com.pozirk.ads.admob.AdMob;<br />
-import com.pozirk.ads.admob.AdParams;<br />
-import com.pozirk.ads.admob.AdEvent;<br />
-<br />
-//&gt; initialization of AdMob<br />
-_admob = new AdMob();<br />
-_admob.addEventListener(AdEvent.INIT_OK, onEvent);<br />
-_admob.addEventListener(AdEvent.INIT_FAIL, onEvent);<br />
-_admob.addEventListener(AdEvent.AD_SHOW_OK, onEvent);<br />
-_admob.addEventListener(AdEvent.AD_SHOW_FAIL, onEvent);<br />
-_admob.addEventListener(AdEvent.PRESENT_SCREEN, onEvent);<br />
-_admob.addEventListener(AdEvent.DISMISS_SCREEN, onEvent);<br />
-_admob.addEventListener(AdEvent.LEAVE_APPLICATION, onEvent);<br />
-_admob.addEventListener(AdEvent.INTERSTITIAL_CACHE_OK, onEvent);<br />
-_admob.addEventListener(AdEvent.INTERSTITIAL_CACHE_OK, onEvent);<br />
-_admob.addEventListener(AdEvent.INTERSTITIAL_CLOSED, onEvent);<br />
-_admob.init("YOUR_PUBLISHER_ID");<br />
-<br />
-...<br />
-<br />
-protected function onEvent(ae:AdEvent):void<br />
-{<br />
-	trace(ae.type+" "+ae._data);<br />
-}<br />
-//&lt;<br />
-<br />
-<br />
-//showing 468x60 ad at the bottom center side of the screen<br />
-_admob.show(AdParams.SIZE_IAB_BANNER, AdParams.HALIGN_CENTER, AdParams.VALIGN_BOTTOM);<br />
-<br />
-//caching and showing interstitial ad<br />
-_admob.cacheInterstitial();<br />
-...<br />
-_admob.showInterstitial();<br />
+```actionscript
+import com.pozirk.ads.admob.AdMob;
+import com.pozirk.ads.admob.AdParams;
+import com.pozirk.ads.admob.AdEvent;
 
+//&gt; initialization of AdMob
+_admob = new AdMob();
+_admob.addEventListener(AdEvent.INIT_OK, onEvent);
+_admob.addEventListener(AdEvent.INIT_FAIL, onEvent);
+_admob.addEventListener(AdEvent.AD_SHOW_OK, onEvent);
+_admob.addEventListener(AdEvent.AD_SHOW_FAIL, onEvent);
+_admob.addEventListener(AdEvent.PRESENT_SCREEN, onEvent);
+_admob.addEventListener(AdEvent.DISMISS_SCREEN, onEvent);
+_admob.addEventListener(AdEvent.LEAVE_APPLICATION, onEvent);
+_admob.addEventListener(AdEvent.INTERSTITIAL_CACHE_OK, onEvent);
+_admob.addEventListener(AdEvent.INTERSTITIAL_CACHE_OK, onEvent);
+_admob.addEventListener(AdEvent.INTERSTITIAL_CLOSED, onEvent);
+_admob.init("YOUR_PUBLISHER_ID");
+
+...
+
+protected function onEvent(ae:AdEvent):void
+{
+	trace(ae.type+" "+ae._data);
+}
+//&lt;
+
+
+//showing 468x60 ad at the bottom center side of the screen
+_admob.show(AdParams.SIZE_IAB_BANNER, AdParams.HALIGN_CENTER, AdParams.VALIGN_BOTTOM);
+
+//caching and showing interstitial ad
+_admob.cacheInterstitial();
+...
+_admob.showInterstitial();
+```
 
 # Game with AdMob
 https://play.google.com/store/apps/details?id=air.com.pozirk.allinonesolitaire<br />
