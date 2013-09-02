@@ -33,7 +33,7 @@ import com.pozirk.ads.admob.AdMob;
 import com.pozirk.ads.admob.AdParams;
 import com.pozirk.ads.admob.AdEvent;
 
-//&gt; initialization of AdMob
+//> initialization of AdMob
 _admob = new AdMob();
 _admob.addEventListener(AdEvent.INIT_OK, onEvent);
 _admob.addEventListener(AdEvent.INIT_FAIL, onEvent);
@@ -53,7 +53,7 @@ protected function onEvent(ae:AdEvent):void
 {
 	trace(ae.type+" "+ae._data);
 }
-//&lt;
+//<
 
 
 //showing 468x60 ad at the bottom center side of the screen
