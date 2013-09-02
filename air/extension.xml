@@ -1,0 +1,17 @@
+<extension xmlns="http://ns.adobe.com/air/extension/3.6">
+  <id>com.pozirk.ads.AdMob</id>
+  <versionNumber>1</versionNumber>
+  <platforms>
+    <platform name="Android-ARM">
+      <applicationDeployment>
+        <nativeLibrary>libAdMob.jar</nativeLibrary>
+        <initializer>com.pozirk.ads.admob.Extension</initializer>
+        <finalizer>com.pozirk.ads.admob.Extension</finalizer>
+      </applicationDeployment>
+    </platform>
+		
+		<platform name="default">
+			<applicationDeployment/>
+    </platform> 
+  </platforms>
+</extension>
