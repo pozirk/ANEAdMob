@@ -34,8 +34,13 @@ import com.pozirk.ads.admob.AdMob;
 import com.pozirk.ads.admob.AdParams;
 import com.pozirk.ads.admob.AdEvent;
 
+...
+
+protected var _admob:AdMob = new AdMob();
+
+...
+
 //> initialization of AdMob
-_admob = new AdMob();
 _admob.addEventListener(AdEvent.INIT_OK, onEvent);
 _admob.addEventListener(AdEvent.INIT_FAIL, onEvent);
 _admob.addEventListener(AdEvent.AD_SHOW_OK, onEvent);
