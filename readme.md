@@ -6,7 +6,6 @@ Supported functionality:<br />
 - show interstitial ad;<br />
 - hide ad;<br />
 - listen tap, close, leave, etc. event.<br />
-<br />
 
 # Docs
 Please, read docs and try ANE before asking any questions.<br />
@@ -75,7 +74,7 @@ In order to see the interstitial ad, you need to win/lose any game.<br />
 
 
 # Misc
-ANE is build with AIR3.6, in order to rebuild for another version do the following:<br />
-- edit "air\extension.xml" and change 3.6 in very first line to any 3.X you need;<br />
-- edit "build.bat" and in the very last line change path from AIR3.9 SDK to any AIR3.X SDK you need;<br />
+ANE is build with AIR3.9, in order to rebuild for another version, do the following:<br />
+- edit "air\extension.xml" and change 3.9, in very first line, to any 3.X you need;<br />
+- edit "build.bat" and, in the very last line, change path from AIR3.9 SDK to any AIR3.X SDK you need;<br />
 - execute "build.bat" to repack the ANE.<br />

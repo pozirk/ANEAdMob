@@ -75,7 +75,7 @@ public class AdMobManager
   	
   	_adView.loadAd(adRequest);
 
-  	RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(-2, -2);
+  	RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
   	params.addRule(halign, -1);
   	params.addRule(valign, -1);
   	_parentView.addView(_adView, params);
@@ -156,7 +156,7 @@ public class AdMobManager
   	if(_ctx != null)
     {
   		if(ad == _interstitial)
-  			_ctx.dispatchStatusEventAsync("PRESENT_SCREEN", "Interestial");
+  			_ctx.dispatchStatusEventAsync("PRESENT_SCREEN", "Interstitial");
       else
       	_ctx.dispatchStatusEventAsync("PRESENT_SCREEN", "Ad");
     }

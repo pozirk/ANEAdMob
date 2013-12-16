@@ -35,7 +35,7 @@ package com.pozirk.ads.admob
 			if(_ctx != null)
 				_ctx.addEventListener(StatusEvent.STATUS, onStatus);
 			else
-				trace('Error! Add extension file to your project.');
+				trace("Error! ANE file was not properly added your project.");
 		}
 
 		public function init(pubID:String):void

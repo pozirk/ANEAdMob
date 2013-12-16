@@ -27,7 +27,9 @@ package com.pozirk.ads.admob
 		public static const SIZE_IAB_BANNER:int = 3; //468x60
 		public static const SIZE_IAB_LEADERBOARD:int = 4; //728x90
 		public static const SIZE_SMART:int = 5; //https://developers.google.com/mobile-ads-sdk/docs/admob/smart-banners
-		//public static const SIZE_IAB_WIDE_SKYSCRAPER:int = 6; not supported by AdMob, only for mediation
+		public static const SIZE_SMART_PORTRAIT:int = 5; //iOS only
+		public static const SIZE_SMART_LANDSCAPE:int = 6; //iOS only
+		//public static const SIZE_IAB_WIDE_SKYSCRAPER:int = 7; not supported by AdMob, only for mediation
 		
 		//> from: http://developer.android.com/reference/android/widget/RelativeLayout.html
 		public static const HALIGN_LEFT:int = 9;
