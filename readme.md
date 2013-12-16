@@ -7,8 +7,6 @@ Supported functionality:<br />
 - hide ad;<br />
 - listen tap, close, leave, etc. event.<br />
 <br />
-DOES ANYBODY WANT TO UPGRADE THIS ANE TO SUPPORT IOS?<br />
-CONTACT ME OR JUST CONTRIBUTE YOUR MODIFICATIONS TO REPOSITORY.<br />
 
 # Docs
 Please, read docs and try ANE before asking any questions.<br />
