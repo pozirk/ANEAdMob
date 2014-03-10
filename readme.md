@@ -1,3 +1,7 @@
+# Notice
+ANE works with older version of AdMob (before integration with AdSense), so you need to use "Legacy Publisher ID" instead of "Ad unit ID" (if you have it) in order to make it working.
+I will try to update the ANE to make it working asap.
+
 # About
 ANEAdMob is an Adobe AIR native extension (ANE) for Android to show ads.<br />
 Supported functionality:<br />
