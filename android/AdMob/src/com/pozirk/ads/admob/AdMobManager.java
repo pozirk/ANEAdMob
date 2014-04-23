@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Pozirk Games
+/* Copyright (c) 2014 Pozirk Games
  * http://www.pozirk.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,25 +20,24 @@ import android.app.Activity;
 //import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import com.google.ads.Ad;
-import com.google.ads.AdListener;
-import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
-import com.google.ads.InterstitialAd;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
 public class AdMobManager
-  implements AdListener
 {
-  protected String _pubID;
   protected AdView _adView = null;
   protected AdSize _adSize = AdSize.BANNER;
   protected RelativeLayout _parentView;
   protected Activity _act;
   protected ExtensionContext _ctx;
   protected InterstitialAd _interstitial;
+  protected RelativeLayout.LayoutParams _params;
+  protected int _bannerOnTop = 0;
 
-  public AdMobManager(String pubID, Activity act, ExtensionContext ctx)
+  public AdMobManager(Activity act, ExtensionContext ctx)
   {
 	  _act = act;
 	  _ctx = ctx;
@@ -46,136 +45,91 @@ public class AdMobManager
 	  RelativeLayout layout = new RelativeLayout(_act);
 	  _act.addContentView(layout, new ViewGroup.LayoutParams(-1, -1));
 
-	  _pubID = pubID;
-
 	  _parentView = layout;
   }
   
-  public void show(int size, int halign, int valign, String testDevice)
+  public void show(String adID, int size, /*int autoHW,*/ int halign, int valign, String testDevice)
   {
   	hide();
   	
   	switch(size)
   	{
   	case 1: _adSize = AdSize.BANNER; break; //set by default, but leave it here for reference
-  	case 2: _adSize = AdSize.IAB_MRECT; break;
-  	case 3: _adSize = AdSize.IAB_BANNER; break;
-  	case 4: _adSize = AdSize.IAB_LEADERBOARD; break;
+  	case 2: _adSize = AdSize.MEDIUM_RECTANGLE; break;
+  	case 3: _adSize = AdSize.FULL_BANNER; break;
+  	case 4: _adSize = AdSize.LEADERBOARD; break;
   	case 5: _adSize = AdSize.SMART_BANNER; break;
-  	//case 6: _adSize = AdSize.IAB_WIDE_SKYSCRAPER; break;
+  	case 6: _adSize = AdSize.WIDE_SKYSCRAPER; break;
   	}
   	
-  	_adView = new AdView(_act, _adSize, _pubID);
-
-  	_adView.setAdListener(this);
+  	_adView = new AdView(_act);
+  	_adView.setAdUnitId(adID);
+  	_adView.setAdSize(_adSize);
   	
-  	AdRequest adRequest = new AdRequest();
-  	if(testDevice != null)
-  		adRequest.addTestDevice(testDevice);
+  	AdRequest adRequest = null;
+  	if(testDevice != null) //no test device
+  		adRequest = new AdRequest.Builder().build();
+  	else
+  		adRequest = new AdRequest.Builder().addTestDevice(testDevice).build(); //eto pizdec
+  	
+  	_adView.setAdListener(new AdMobListener(_ctx, "BANNER"));
   	
   	_adView.loadAd(adRequest);
-
-  	RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-  	params.addRule(halign, -1);
-  	params.addRule(valign, -1);
-  	_parentView.addView(_adView, params);
+  	
+  	_params = new RelativeLayout.LayoutParams(-2, -2);
+  	_params.addRule(halign, -1);
+  	_params.addRule(valign, -1);
+  }
+  
+  /**
+   * Required to fix this problem: https://groups.google.com/forum/#!topic/google-admob-ads-sdk/avwVXvBt_sM
+   */
+  public void bannerOnTop()
+  {
+  	if(_bannerOnTop == 0)
+  	{
+  		_parentView.addView(_adView, _params);
+  		_bannerOnTop = 1;
+  	}
   }
 
   public void hide()
   {
   	if(_adView != null)
   	{
-  		_adView.stopLoading();
+  		_adView.pause();
   		_parentView.removeView(_adView);
+  		_adView.destroy();
   	}
   	
-  	//_adView.destroy(); [update: ???]
+  	_bannerOnTop = 0;
   	_adView = null;
   }
 
-  public void cacheInterstitial(String testDevice)
+  public void cacheInterstitial(String adID, String testDevice)
   {
-  	_interstitial = new InterstitialAd(_act, _pubID);
+  	_interstitial = new InterstitialAd(_act);
+  	_interstitial.setAdUnitId(adID);
 
-  	AdRequest adRequest = new AdRequest();
-  	if(testDevice != null)
-  		adRequest.addTestDevice(testDevice);
+  	AdRequest adRequest = null;
+  	if(testDevice != null) //no test device
+  		adRequest = new AdRequest.Builder().build();
+  	else
+  		adRequest = new AdRequest.Builder().addTestDevice(testDevice).build(); //eto pizdec
   	
   	_interstitial.loadAd(adRequest);
-  	_interstitial.setAdListener(this);
+  	_interstitial.setAdListener(new AdMobListener(_ctx, "INTERSTITIAL"));
   }
   
   public void showInterstitial()
   {
-  	if(_interstitial != null && _interstitial.isReady() == true)
+  	if(_interstitial != null && _interstitial.isLoaded() == true)
   		_interstitial.show();
   }
 
   public void dispose()
   {
   	hide();
-  	/*ViewGroup vg = (ViewGroup)_adView.getParent();
-  	if (vg != null)
-  		vg.removeView(this.adView);*/
-  }
-
-  public void onReceiveAd(Ad ad)
-  {
-  	if(_ctx != null)
-    {
-  		if(ad == _interstitial)
-  			_ctx.dispatchStatusEventAsync("INTERSTITIAL_CACHE_OK", "");
-  		else if(_adView != null)
-      {
-  			if(_adSize == AdSize.SMART_BANNER)
-        {
-  				AdSize testSize = AdSize.createAdSize(AdSize.SMART_BANNER, _ctx.getActivity());
-  				_ctx.dispatchStatusEventAsync("AD_SHOW_OK", String.valueOf(testSize.getWidth()) + "x" + String.valueOf(testSize.getHeight()));
-        }
-        else
-        	_ctx.dispatchStatusEventAsync("AD_SHOW_OK", String.valueOf(_adSize.getWidth()) + "x" + String.valueOf(_adSize.getHeight()));
-      }
-      else
-      	_ctx.dispatchStatusEventAsync("AD_SHOW_FAIL", "Error! No AdView.");
-    }
-  }
-
-  public void onFailedToReceiveAd(Ad ad, AdRequest.ErrorCode error)
-  {
-  	if(_ctx != null)
-    {
-  		if(ad == _interstitial)
-  			_ctx.dispatchStatusEventAsync("INTERSTITIAL_CACHE_FAIL", error.toString());
-      else
-      	_ctx.dispatchStatusEventAsync("AD_SHOW_FAIL", error.toString());
-    }
-  }
-
-  public void onPresentScreen(Ad ad)
-  {
-  	if(_ctx != null)
-    {
-  		if(ad == _interstitial)
-  			_ctx.dispatchStatusEventAsync("PRESENT_SCREEN", "Interstitial");
-      else
-      	_ctx.dispatchStatusEventAsync("PRESENT_SCREEN", "Ad");
-    }
-  }
-
-  public void onDismissScreen(Ad ad)
-  {
-  	if(_ctx != null)
-    {
-  		if(ad == _interstitial)
-  			_ctx.dispatchStatusEventAsync("INTERSTITIAL_CLOSED", "");
-      else
-      	_ctx.dispatchStatusEventAsync("DISMISS_SCREEN", "Ad");
-    }
-  }
-
-  public void onLeaveApplication(Ad ad)
-  {
-  	if(_ctx != null)
-  		_ctx.dispatchStatusEventAsync("LEAVE_APPLICATION", "");
+  	_adView.destroy();
   }
 }

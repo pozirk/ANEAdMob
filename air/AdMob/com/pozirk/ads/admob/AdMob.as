@@ -1,5 +1,5 @@
-﻿/* Copyright (c) 2013 Pozirk Games
- * http://www.pozirk.com
+﻿/* Copyright (c) 2014 Pozirk Games
+ * http://inside.pozirk.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,21 +38,22 @@ package com.pozirk.ads.admob
 				trace("Error! ANE file was not properly added your project.");
 		}
 
-		public function init(pubID:String):void
+		public function init():void
 		{
-			_ctx.call("init", pubID);
+			_ctx.call("init");
 		}
 		
 		/**
 		 * Show ad
+		 * @param	adID - Ad unit ID
 		 * @param	size - one of the constants from AdParams
 		 * @param	halign - left, center, right,  from AdParams
 		 * @param	valign - from AdParams
 		 * @param	testDevice - device ID, one of the  way to find it is to run ads in regular mode and find the following line in logcat: <To get test ads on this device, call adRequest.addTestDevice("XXX");>. Just pass XXX as testDevice.
 		 */
-		public function show(size:int, halign:int, valign:int, testDevice:String = null):void
+		public function show(adID:String, size:int, halign:int, valign:int, testDevice:String = null):void
 		{
-			_ctx.call("show", size, halign, valign, testDevice);
+			_ctx.call("show", adID, size, halign, valign, testDevice);
 		}
 
 		public function hide():void
@@ -62,11 +63,12 @@ package com.pozirk.ads.admob
 
 		/**
 		 * Cache interstitial ad, listen for AdEvent.INTERSTITIAL_CACHE_OK before showing it
+		 * @param	adID - Ad unit ID
 		 * @param	testDevice - device ID
 		 */
-		public function cacheInterstitial(testDevice:String = null):void
+		public function cacheInterstitial(adID:String, testDevice:String = null):void
 		{
-			_ctx.call("cacheInterstitial", testDevice);
+			_ctx.call("cacheInterstitial", adID, testDevice);
 		}
 
 		/**
@@ -95,33 +97,51 @@ package com.pozirk.ads.admob
 					break;
 				}
 				
-				case "AD_SHOW_OK":
+				case "BANNER_SHOW_OK":
 				{
-					e = new AdEvent(AdEvent.AD_SHOW_OK, event.level);
+					e = new AdEvent(AdEvent.BANNER_SHOW_OK);
 					break;
 				}
 				
-				case "AD_SHOW_FAIL":
+				case "BANNER_SHOW_FAIL":
 				{
-					e = new AdEvent(AdEvent.AD_SHOW_FAIL, event.level);
+					e = new AdEvent(AdEvent.BANNER_SHOW_FAIL, event.level);
 					break;
 				}
 				
-				case "PRESENT_SCREEN":
+				case "BANNER_LEFT_APP":
 				{
-					e = new AdEvent(AdEvent.PRESENT_SCREEN, event.level);
+					e = new AdEvent(AdEvent.BANNER_LEFT_APP);
 					break;
 				}
 				
-				case "DISMISS_SCREEN":
+				case "BANNER_OPENED":
 				{
-					e = new AdEvent(AdEvent.DISMISS_SCREEN, event.level);
+					e = new AdEvent(AdEvent.BANNER_OPENED, event.level);
 					break;
 				}
 				
-				case "LEAVE_APPLICATION":
+				case "BANNER_CLOSED":
 				{
-					e = new AdEvent(AdEvent.LEAVE_APPLICATION);
+					e = new AdEvent(AdEvent.BANNER_CLOSED);
+					break;
+				}
+				
+				case "INTERSTITIAL_SHOW_OK":
+				{
+					e = new AdEvent(AdEvent.INTERSTITIAL_SHOW_OK);
+					break;
+				}
+				
+				case "INTERSTITIAL_SHOW_FAIL":
+				{
+					e = new AdEvent(AdEvent.INTERSTITIAL_SHOW_FAIL, event.level);
+					break;
+				}
+				
+				case "INTERSTITIAL_LEFT_APP":
+				{
+					e = new AdEvent(AdEvent.INTERSTITIAL_LEFT_APP);
 					break;
 				}
 				
@@ -134,6 +154,12 @@ package com.pozirk.ads.admob
 				case "INTERSTITIAL_CACHE_FAIL":
 				{
 					e = new AdEvent(AdEvent.INTERSTITIAL_CACHE_FAIL, event.level);
+					break;
+				}
+				
+				case "INTERSTITIAL_OPENED":
+				{
+					e = new AdEvent(AdEvent.INTERSTITIAL_OPENED);
 					break;
 				}
 				

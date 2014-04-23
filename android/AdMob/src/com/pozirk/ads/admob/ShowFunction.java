@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Pozirk Games
+/* Copyright (c) 2014 Pozirk Games
  * http://www.pozirk.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,17 +28,18 @@ public class ShowFunction implements FREFunction
 
   	try
     {
-    	FREObject size = args[0];
-    	FREObject halign = args[1];
-    	FREObject valign = args[2];
-    	FREObject testDevice = args[3];
+  		FREObject adID = args[0];
+    	FREObject size = args[1];
+    	FREObject halign = args[2];
+    	FREObject valign = args[3];
+    	FREObject testDevice = args[4];
     	
-    	ctx._adMobMan.show(size.getAsInt(), halign.getAsInt(), valign.getAsInt(), (testDevice != null ? testDevice.getAsString() : null));
+    	ctx._adMobMan.show(adID.getAsString(), size.getAsInt(), halign.getAsInt(), valign.getAsInt(), (testDevice != null ? testDevice.getAsString() : null));
     }
   	catch(Exception e)
     {
     	e.printStackTrace();
-    	ctx.dispatchStatusEventAsync("AD_SHOW_FAIL", e.getMessage());
+    	ctx.dispatchStatusEventAsync("BANNER_SHOW_FAIL", e.getMessage());
     }
 
   	return null;

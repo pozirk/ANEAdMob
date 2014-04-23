@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Pozirk Games
+/* Copyright (c) 2014 Pozirk Games
  * http://www.pozirk.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,16 +27,11 @@ public class InitFunction
   public FREObject call(FREContext frectx, FREObject[] args)
   {
   	ExtensionContext ctx = (ExtensionContext)frectx;
-  	Activity a = ctx.getActivity();
+  	Activity act = ctx.getActivity();
 
     try
     {
-    	FREObject pubID = args[0];
-    	
-    	if(pubID != null && pubID.getAsString().length() != 0)
-    		ctx._adMobMan = new AdMobManager(pubID.getAsString(), a, ctx);
-    	else
-    		ctx.dispatchStatusEventAsync("INIT_FAIL", "Publisher ID is not set.");
+   		ctx._adMobMan = new AdMobManager(act, ctx);
     	
     	ctx.dispatchStatusEventAsync("INIT_OK", "");
     }

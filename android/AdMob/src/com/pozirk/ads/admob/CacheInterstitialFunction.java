@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Pozirk Games
+/* Copyright (c) 2014 Pozirk Games
  * http://www.pozirk.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +29,9 @@ public class CacheInterstitialFunction
 
   	try
     {
-    	FREObject testDevice = args[0];
-    	ctx._adMobMan.cacheInterstitial((testDevice != null ? testDevice.getAsString() : null));
+  		FREObject adID = args[0];
+    	FREObject testDevice = args[1];
+    	ctx._adMobMan.cacheInterstitial(adID.getAsString(), (testDevice != null ? testDevice.getAsString() : null));
     }
   	catch(Exception e)
     {

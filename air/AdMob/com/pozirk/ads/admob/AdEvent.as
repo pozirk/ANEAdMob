@@ -1,5 +1,5 @@
-﻿/* Copyright (c) 2013 Pozirk Games
- * http://www.pozirk.com
+﻿/* Copyright (c) 2014 Pozirk Games
+ * http://inside.pozirk.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,13 +26,17 @@ package com.pozirk.ads.admob
 	{
 		public static const INIT_OK:String = "INIT_OK";
 		public static const INIT_FAIL:String = "INIT_FAIL";
-		public static const AD_SHOW_OK:String = "AD_SHOW_OK";
-		public static const AD_SHOW_FAIL:String = "AD_SHOW_FAIL";
-		public static const PRESENT_SCREEN:String = "PRESENT_SCREEN"; //Called when an Activity is created in front of your app, presenting the user with a full-screen ad UI in response to their touching ad.
-		public static const DISMISS_SCREEN:String = "DISMISS_SCREEN"; //Called when the full-screen Activity presented with onPresentScreen has been dismissed and control is returning to your app.
-		public static const LEAVE_APPLICATION:String = "LEAVE_APPLICATION"; //Called when an Ad touch will launch a new application.
+		public static const BANNER_SHOW_OK:String = "BANNER_SHOW_OK";
+		public static const BANNER_SHOW_FAIL:String = "BANNER_SHOW_FAIL";
+		public static const BANNER_LEFT_APP:String = "BANNER_LEFT_APP"; //Called when an Ad touch will launch a new application.
+		public static const BANNER_OPENED:String = "BANNER_OPENED";
+		public static const BANNER_CLOSED:String = "BANNER_CLOSED";
+		public static const INTERSTITIAL_SHOW_OK:String = "INTERSTITIAL_SHOW_OK";
+		public static const INTERSTITIAL_SHOW_FAIL:String = "INTERSTITIAL_SHOW_FAIL";
+		public static const INTERSTITIAL_LEFT_APP:String = "INTERSTITIAL_LEFT_APP"; //Called when an Ad touch will launch a new application.
 		public static const INTERSTITIAL_CACHE_OK:String = "INTERSTITIAL_CACHE_OK";
 		public static const INTERSTITIAL_CACHE_FAIL:String = "INTERSTITIAL_CACHE_FAIL";
+		public static const INTERSTITIAL_OPENED:String = "INTERSTITIAL_OPENED";
 		public static const INTERSTITIAL_CLOSED:String = "INTERSTITIAL_CLOSED";
 		
 		public var _data:String; //extra info about event

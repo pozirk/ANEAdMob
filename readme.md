@@ -21,6 +21,7 @@ Add the following lines to your AIR Aplication-app.xml file inside &lt;manifestA
 &lt;uses-permission android:name="android.permission.INTERNET"/&gt;<br />
 &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;<br />
 &lt;application&gt;<br />
+	&lt;meta-data android:name="com.google.android.gms.version" android:value="4323000" /&gt; &lt;!-- should be android:value="@integer/google_play_services_version" --&gt;
 	&lt;activity android:name="com.google.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/&gt;<br />
 &lt;/application&gt;<br />
 
@@ -40,15 +41,19 @@ protected var _admob:AdMob = new AdMob();
 //> initialization of AdMob
 _admob.addEventListener(AdEvent.INIT_OK, onEvent);
 _admob.addEventListener(AdEvent.INIT_FAIL, onEvent);
-_admob.addEventListener(AdEvent.AD_SHOW_OK, onEvent);
-_admob.addEventListener(AdEvent.AD_SHOW_FAIL, onEvent);
-_admob.addEventListener(AdEvent.PRESENT_SCREEN, onEvent);
-_admob.addEventListener(AdEvent.DISMISS_SCREEN, onEvent);
-_admob.addEventListener(AdEvent.LEAVE_APPLICATION, onEvent);
+_admob.addEventListener(AdEvent.BANNER_SHOW_OK, onEvent);
+_admob.addEventListener(AdEvent.BANNER_SHOW_FAIL, onEvent);
+_admob.addEventListener(AdEvent.BANNER_LEFT_APP, onEvent);
+_admob.addEventListener(AdEvent.BANNER_OPENED, onEvent);
+_admob.addEventListener(AdEvent.BANNER_CLOSED, onEvent);
+_admob.addEventListener(AdEvent.INTERSTITIAL_SHOW_OK, onEvent);
+_admob.addEventListener(AdEvent.INTERSTITIAL_SHOW_FAIL, onEvent);
 _admob.addEventListener(AdEvent.INTERSTITIAL_CACHE_OK, onEvent);
-_admob.addEventListener(AdEvent.INTERSTITIAL_CACHE_OK, onEvent);
+_admob.addEventListener(AdEvent.INTERSTITIAL_CACHE_FAIL, onEvent);
+_admob.addEventListener(AdEvent.INTERSTITIAL_LEFT_APP, onEvent);
+_admob.addEventListener(AdEvent.INTERSTITIAL_OPENED, onEvent);
 _admob.addEventListener(AdEvent.INTERSTITIAL_CLOSED, onEvent);
-_admob.init("YOUR_PUBLISHER_ID");
+_admob.init();
 
 ...
 
@@ -60,21 +65,25 @@ protected function onEvent(ae:AdEvent):void
 
 
 //showing 468x60 ad at the bottom center side of the screen
-_admob.show(AdParams.SIZE_IAB_BANNER, AdParams.HALIGN_CENTER, AdParams.VALIGN_BOTTOM);
+_admob.show("AD_UNIT_ID", AdParams.SIZE_IAB_BANNER, AdParams.HALIGN_CENTER, AdParams.VALIGN_BOTTOM);
+
+//hide ad
+_admob.hide();
 
 //caching and showing interstitial ad
-_admob.cacheInterstitial();
+_admob.cacheInterstitial("AD_UNIT_ID");
 ...
 _admob.showInterstitial();
 ```
 
 # Game with AdMob
-https://play.google.com/store/apps/details?id=air.com.pozirk.allinonesolitaire<br />
+https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong2<br />
 In order to see the interstitial ad, you need to win/lose any game.<br />
 
 
 # Misc
-ANE is build with AIR3.9, in order to rebuild for another version, do the following:<br />
-- edit "air\extension.xml" and change 3.9, in very first line, to any 3.X you need;<br />
-- edit "build.bat" and, in the very last line, change path from AIR3.9 SDK to any AIR3.X SDK you need;<br />
+ANE is build with AIR13.0, in order to rebuild for another (lower only, no need to do this for higher) version, do the following:<br />
+- edit "air\extension.xml" and change 13.0, in very first line, to any version you need;<br />
+- edit "build.bat" and, in the very last line, change path from AIR13.0 SDK to any AIR SDK you need;<br />
 - execute "build.bat" to repack the ANE.<br />
+- pray, it works! :)<br />
