@@ -35,12 +35,24 @@ package com.pozirk.ads.admob
 			if(_ctx != null)
 				_ctx.addEventListener(StatusEvent.STATUS, onStatus);
 			else
-				trace("Error! ANE file was not properly added your project.");
+				trace("Error! ANE was not properly added to your project.");
 		}
 
 		public function init():void
 		{
-			_ctx.call("init");
+			try
+			{
+				_ctx.call("init");
+			}
+			catch(err:Error)
+			{
+				var e:AdEvent = null;
+				if(err.errorID == 3500)
+					e = new AdEvent(AdEvent.INIT_FAIL, "Isn't it clear, that ANDROID Extension will NOT work on PC/Mac???");
+				else
+					e = new AdEvent(AdEvent.INIT_FAIL, "ANE was not properly added to your project.");
+				this.dispatchEvent(e);
+			}
 		}
 		
 		/**
