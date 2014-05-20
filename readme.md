@@ -22,7 +22,7 @@ Add the following lines to your AIR Aplication-app.xml file inside &lt;manifestA
 &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;<br />
 &lt;application&gt;<br />
 	&lt;meta-data android:name="com.google.android.gms.version" android:value="4323000" /&gt; &lt;!-- should be android:value="@integer/google_play_services_version" --&gt;
-	&lt;activity android:name="com.google.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/&gt;<br />
+	&lt;activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/&gt;<br />
 &lt;/application&gt;<br />
 
 

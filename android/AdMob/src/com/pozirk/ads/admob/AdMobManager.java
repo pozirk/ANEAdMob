@@ -67,7 +67,7 @@ public class AdMobManager
   	_adView.setAdSize(_adSize);
   	
   	AdRequest adRequest = null;
-  	if(testDevice != null) //no test device
+  	if(testDevice == null) //no test device
   		adRequest = new AdRequest.Builder().build();
   	else
   		adRequest = new AdRequest.Builder().addTestDevice(testDevice).build(); //eto pizdec
@@ -112,7 +112,7 @@ public class AdMobManager
   	_interstitial.setAdUnitId(adID);
 
   	AdRequest adRequest = null;
-  	if(testDevice != null) //no test device
+  	if(testDevice == null) //no test device
   		adRequest = new AdRequest.Builder().build();
   	else
   		adRequest = new AdRequest.Builder().addTestDevice(testDevice).build(); //eto pizdec
