@@ -16,7 +16,7 @@ http://help.adobe.com/en_US/air/extensions/index.html<br />
 # Installation
 Extension ID: com.pozirk.ads.AdMob<br />
 Add "AdMob.ane" and "air\AdMob\bin\AdMob.swc" to your AIR project.<br />
-Add the following lines to your AIR Aplication-app.xml file inside &lt;manifestAdditions&gt; section:<br />
+Add the following lines to your AIR Application-app.xml file inside &lt;manifestAdditions&gt; section:<br />
 <br />
 &lt;uses-permission android:name="android.permission.INTERNET"/&gt;<br />
 &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;<br />
