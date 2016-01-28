@@ -65,7 +65,7 @@ protected function onEvent(ae:AdEvent):void
 
 
 //showing 468x60 ad at the bottom center side of the screen
-_admob.show("AD_UNIT_ID", AdParams.SIZE_IAB_BANNER, AdParams.HALIGN_CENTER, AdParams.VALIGN_BOTTOM);
+_admob.show("AD_UNIT_ID", AdParams.SIZE_SMART_BANNER, AdParams.HALIGN_CENTER, AdParams.VALIGN_BOTTOM);
 
 //hide ad
 _admob.hide();
