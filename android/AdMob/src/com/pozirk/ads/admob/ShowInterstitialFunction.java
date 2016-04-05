@@ -22,7 +22,7 @@ import com.adobe.fre.FREObject;
 
 public class ShowInterstitialFunction
   implements FREFunction
-{
+{	
 	public FREObject call(FREContext frectx, FREObject[] args)
   {
   	ExtensionContext ctx = (ExtensionContext)frectx;

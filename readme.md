@@ -21,7 +21,7 @@ Add the following lines to your AIR Application-app.xml file inside &lt;manifest
 &lt;uses-permission android:name="android.permission.INTERNET"/&gt;<br />
 &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;<br />
 &lt;application&gt;<br />
-	&lt;meta-data android:name="com.google.android.gms.version" android:value="4323000" /&gt; &lt;!-- should be android:value="@integer/google_play_services_version" --&gt;
+	&lt;meta-data android:name="com.google.android.gms.version" android:value="8487000" /&gt; &lt;!-- should be android:value="@integer/google_play_services_version" --&gt;
 	&lt;activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/&gt;<br />
 &lt;/application&gt;<br />
 
@@ -82,8 +82,8 @@ In order to see the interstitial ad, you need to win/lose any game.<br />
 
 
 # Misc
-ANE is build with AIR13.0, in order to rebuild for another (lower only, no need to do this for higher) version, do the following:<br />
-- edit "air\extension.xml" and change 13.0, in very first line, to any version you need;<br />
-- edit "build.bat" and, in the very last line, change path from AIR13.0 SDK to any AIR SDK you need;<br />
+ANE is build with AIR21.0, in order to rebuild for another (lower only, no need to do this for higher) version, do the following:<br />
+- edit "air\extension.xml" and change 21.0, in very first line, to any version you need;<br />
+- edit "build.bat" and, in the very last line, change path from AIR21.0 SDK to any AIR SDK you need;<br />
 - execute "build.bat" to repack the ANE.<br />
 - pray, it works! :)<br />

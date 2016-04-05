@@ -35,7 +35,6 @@ public class AdMobManager
   protected ExtensionContext _ctx;
   protected InterstitialAd _interstitial;
   protected RelativeLayout.LayoutParams _params;
-  protected int _bannerOnTop = 0;
 
   public AdMobManager(Activity act, ExtensionContext ctx)
   {
@@ -74,11 +73,13 @@ public class AdMobManager
   	
   	_adView.setAdListener(new AdMobListener(_ctx, "BANNER"));
   	
-  	_adView.loadAd(adRequest);
-  	
   	_params = new RelativeLayout.LayoutParams(-2, -2);
   	_params.addRule(halign, -1);
   	_params.addRule(valign, -1);
+		
+		_adView.loadAd(adRequest);
+		
+		_parentView.addView(_adView, _params);
   }
   
   /**
@@ -86,11 +87,8 @@ public class AdMobManager
    */
   public void bannerOnTop()
   {
-  	if(_bannerOnTop == 0)
-  	{
-  		_parentView.addView(_adView, _params);
-  		_bannerOnTop = 1;
-  	}
+  	if(_adView != null)
+			_parentView.bringToFront();
   }
 
   public void hide()
@@ -102,7 +100,6 @@ public class AdMobManager
   		_adView.destroy();
   	}
   	
-  	_bannerOnTop = 0;
   	_adView = null;
   }
 
