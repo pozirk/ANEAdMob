@@ -16,7 +16,7 @@ http://help.adobe.com/en_US/air/extensions/index.html<br />
 # Installation
 Extension ID: com.pozirk.ads.AdMob<br />
 Add "AdMob.ane" and "air\AdMob\bin\AdMob.swc" to your AIR project.<br />
-Add the following lines to your AIR Application-app.xml file inside &lt;manifestAdditions&gt; section:<br />
+Add the following lines to your AIR Aplication-app.xml file inside &lt;manifestAdditions&gt; section:<br />
 <br />
 &lt;uses-permission android:name="android.permission.INTERNET"/&gt;<br />
 &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;<br />
@@ -76,8 +76,11 @@ _admob.cacheInterstitial("AD_UNIT_ID");
 _admob.showInterstitial();
 ```
 
-# Game with AdMob
+# Games with AdMob
+https://play.google.com/store/apps/details?id=air.com.pozirk.allinonesolitaire<br />
+https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong<br />
 https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong2<br />
+https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong3<br />
 In order to see the interstitial ad, you need to win/lose any game.<br />
 
 
