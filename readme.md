@@ -5,7 +5,8 @@ Supported functionality:<br />
 - cache interstitial ad;<br />
 - show interstitial ad;<br />
 - hide ad;<br />
-- listen tap, close, leave, etc. event.<br />
+- mute sound;<br />
+- listen to tap, close, leave, etc. event.<br />
 
 # Docs
 Please, read docs and try ANE before asking any questions.<br />
