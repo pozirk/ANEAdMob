@@ -25,6 +25,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 public class AdMobManager
 {
@@ -40,6 +41,8 @@ public class AdMobManager
   {
 	  _act = act;
 	  _ctx = ctx;
+	  
+	  MobileAds.initialize(_act);
 
 	  RelativeLayout layout = new RelativeLayout(_act);
 	  _act.addContentView(layout, new ViewGroup.LayoutParams(-1, -1));
@@ -76,10 +79,10 @@ public class AdMobManager
   	_params = new RelativeLayout.LayoutParams(-2, -2);
   	_params.addRule(halign, -1);
   	_params.addRule(valign, -1);
+  	
+  	_parentView.addView(_adView, _params);
 		
 		_adView.loadAd(adRequest);
-		
-		_parentView.addView(_adView, _params);
   }
   
   /**
@@ -105,6 +108,8 @@ public class AdMobManager
 
   public void cacheInterstitial(String adID, String testDevice)
   {
+  	//Log.d("SOLITAIRE", "CACHE");
+  	
   	_interstitial = new InterstitialAd(_act);
   	_interstitial.setAdUnitId(adID);
 
@@ -120,8 +125,17 @@ public class AdMobManager
   
   public void showInterstitial()
   {
+  	//Log.d("SOLITAIRE", "SHOW");
+  	
   	if(_interstitial != null && _interstitial.isLoaded() == true)
   		_interstitial.show();
+  }
+  
+  public void setVolume(double vol)
+  {
+  	//Log.d("SOLITAIRE", "MUTE");
+  	MobileAds.setAppVolume((float)vol);
+  	//Log.d("SOLITAIRE MUTE", ""+vol);
   }
 
   public void dispose()

@@ -39,6 +39,7 @@ public class ExtensionContext extends FREContext
   	functionMap.put("cacheInterstitial", new CacheInterstitialFunction());
   	functionMap.put("showInterstitial", new ShowInterstitialFunction());
   	functionMap.put("dispose", new DisposeFunction());
+  	functionMap.put("setVolume", new SetVolumeFunction());
 
   	return functionMap;
   }

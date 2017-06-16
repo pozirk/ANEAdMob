@@ -8,15 +8,15 @@
     <movie fps="30" />
     <movie width="800" />
     <movie height="600" />
-    <movie version="10" />
-    <movie minorVersion="1" />
+    <movie version="17" />
+    <movie minorVersion="0" />
     <movie platform="Flash Player" />
     <movie background="#FFFFFF" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="." />
-    <class path="c:\_dev\airsdk13.0\frameworks\libs\air" />
+    <class path="c:\_dev\airsdk25\frameworks\libs\air" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -57,7 +57,7 @@
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
-    <element path="c:\_dev\airsdk13.0\frameworks\libs\air\airglobal.swc" />
+    <element path="c:\_dev\airsdk25\frameworks\libs\air\airglobal.swc" />
   </externalLibraryPaths>
   <!-- Runtime Shared Libraries -->
   <rslPaths>
@@ -77,7 +77,7 @@
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
-    <!-- example: <hidden path="..." /> -->
+    <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
   <preBuildCommand />
@@ -86,7 +86,8 @@
   <!-- Other project options -->
   <options>
     <option showHiddenPaths="False" />
-    <option testMovie="Default" />
+    <option testMovie="Unknown" />
+    <option testMovieCommand="" />
   </options>
   <!-- Plugin storage -->
   <storage />

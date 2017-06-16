@@ -91,6 +91,14 @@ package com.pozirk.ads.admob
 			_ctx.call("showInterstitial");
 		}
 		
+		/**
+		 * Mute/unmute sound
+		 */
+		public function setVolume(vol:Number):void
+		{
+			_ctx.call("setVolume", vol);
+		}
+		
 		protected function onStatus(event:StatusEvent):void
 		{
 			var e:AdEvent = null;
