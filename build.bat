@@ -6,9 +6,9 @@ xcopy android\AdMob\bin\classes android\AdMob\bin /S /Y /R
 
 rd android\AdMob\bin\classes /S /Q
 
-"c:\Program Files (x86)\Java\jdk1.7.0_51\bin\jar.exe" cvf android/AdMob/build/libAdMob.jar -C android/AdMob/bin .
+"c:\Program Files (x86)\Java\jdk1.8.0_144\bin\jar.exe" cvf android/AdMob/build/libAdMob.jar -C android/AdMob/bin .
 
 SET PLATFORM_ANDROID= -platform Android-ARM -C android\AdMob\build\ .
 SET PLATFORM_DEFAULT= -platform default -C default\ .
 
-"c:\_dev\airsdk13.0\bin\adt.bat" -package -target ane AdMob.ane air\extension.xml -swc air/AdMob/bin/AdMob.swc %PLATFORM_ANDROID% %PLATFORM_DEFAULT%
+"c:\_dev\airsdk27\bin\adt.bat" -package -target ane AdMob.ane air\extension.xml -swc air/AdMob/bin/AdMob.swc %PLATFORM_ANDROID% %PLATFORM_DEFAULT%

@@ -1,3 +1,6 @@
+# News
+2017-11-22: Updated to the latest version of Adobe AIR 27 and Google Play Services 11.0.4. Still working as expected, at least for me. :)
+
 # About
 ANEAdMob is an Adobe AIR native extension (ANE) for Android to show ads.<br />
 Supported functionality:<br />
@@ -21,7 +24,7 @@ Add the following lines to your AIR Aplication-app.xml file inside &lt;manifestA
 &lt;uses-permission android:name="android.permission.INTERNET"/&gt;<br />
 &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;<br />
 &lt;application&gt;<br />
-	&lt;meta-data android:name="com.google.android.gms.version" android:value="8487000" /&gt; &lt;!-- should be android:value="@integer/google_play_services_version" --&gt;
+	&lt;meta-data android:name="com.google.android.gms.version" android:value="11020000" /&gt; &lt;!-- should be android:value="@integer/google_play_services_version" --&gt;
 	&lt;activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/&gt;<br />
 &lt;/application&gt;<br />
 
@@ -82,11 +85,3 @@ https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong<br 
 https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong2<br />
 https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong3<br />
 In order to see the interstitial ad, you need to win/lose any game.<br />
-
-
-# Misc
-ANE is build with AIR21.0, in order to rebuild for another (lower only, no need to do this for higher) version, do the following:<br />
-- edit "air\extension.xml" and change 21.0, in very first line, to any version you need;<br />
-- edit "build.bat" and, in the very last line, change path from AIR21.0 SDK to any AIR SDK you need;<br />
-- execute "build.bat" to repack the ANE.<br />
-- pray, it works! :)<br />

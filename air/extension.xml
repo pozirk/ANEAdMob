@@ -1,4 +1,4 @@
-<extension xmlns="http://ns.adobe.com/air/extension/15.0">
+<extension xmlns="http://ns.adobe.com/air/extension/27.0">
   <id>com.pozirk.ads.AdMob</id>
   <versionNumber>1</versionNumber>
   <platforms>
