@@ -77,6 +77,8 @@ _admob.hide();
 _admob.cacheInterstitial("AD_UNIT_ID");
 ...
 _admob.showInterstitial();
+...
+_admob.setVolume(vol); //set volume of the ad, 0-1 range, where 0 - mute, 1 - max volume.
 ```
 
 # Games with AdMob
