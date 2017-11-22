@@ -8,8 +8,7 @@ Supported functionality:<br />
 - cache interstitial ad;<br />
 - show interstitial ad;<br />
 - hide ad;<br />
-- mute sound;<br />
-- listen to tap, close, leave, etc. event.<br />
+- listen tap, close, leave, etc. event.<br />
 
 # Docs
 Please, read docs and try ANE before asking any questions.<br />
@@ -85,16 +84,4 @@ https://play.google.com/store/apps/details?id=air.com.pozirk.allinonesolitaire<b
 https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong<br />
 https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong2<br />
 https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong3<br />
-<<<<<<< HEAD
 In order to see the interstitial ad, you need to win/lose any game.<br />
-=======
-In order to see the interstitial ad, you need to win/lose any game.<br />
-
-
-# Misc
-ANE is build with AIR21.0, in order to rebuild for another (lower only, no need to do this for higher) version, do the following:<br />
-- edit "air\extension.xml" and change 21.0, in very first line, to any version you need;<br />
-- edit "build.bat" and, in the very last line, change path from AIR21.0 SDK to any AIR SDK you need;<br />
-- execute "build.bat" to repack the ANE.<br />
-- pray, it works! :)<br />
->>>>>>> origin/master
