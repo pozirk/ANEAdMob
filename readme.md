@@ -70,15 +70,17 @@ protected function onEvent(ae:AdEvent):void
 //showing smart-size ad at the bottom center side of the screen
 _admob.show("AD_UNIT_ID", AdParams.SIZE_SMART_BANNER, AdParams.HALIGN_CENTER, AdParams.VALIGN_BOTTOM);
 
-//hide ad
+//hiding ad
 _admob.hide();
 
-//caching and showing interstitial ad
+//caching interstitial ad
 _admob.cacheInterstitial("AD_UNIT_ID");
 ...
+//showing interstitial ad, make sure it's cached first
 _admob.showInterstitial();
 ...
-_admob.setVolume(vol); //set volume of the ad, 0-1 range, where 0 - mute, 1 - max volume.
+//setting volume of the interstitial ad, can have sound, if it's video
+_admob.setVolume(vol); //0-1 range, where 0 - mute, 1 - max volume (default, I guess).
 ```
 
 # Games with AdMob
