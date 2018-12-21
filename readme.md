@@ -21,12 +21,14 @@ Extension ID: com.pozirk.ads.AdMob<br />
 Add "AdMob.ane" and "air\AdMob\bin\AdMob.swc" to your AIR project.<br />
 Add the following lines to your AIR Aplication-app.xml file inside &lt;manifestAdditions&gt; section:<br />
 <br />
+&lt;![CDATA[&lt;manifest android:installLocation="auto"&gt;<br />
 &lt;uses-permission android:name="android.permission.INTERNET"/&gt;<br />
 &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;<br />
 &lt;application&gt;<br />
-	&lt;meta-data android:name="com.google.android.gms.version" android:value="11020000" /&gt; &lt;!-- should be android:value="@integer/google_play_services_version" --&gt;
-	&lt;activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/&gt;<br />
+&lt;meta-data android:name="com.google.android.gms.version" android:value="11020000" /&gt;<br />
+&lt;activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/&gt;<br />
 &lt;/application&gt;<br />
+&lt;/manifest>]]&gt;
 
 
 # Example
