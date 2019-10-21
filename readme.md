@@ -1,5 +1,7 @@
 # News
-2017-11-22: Updated to the latest version of Adobe AIR 27 and Google Play Services 11.0.4. Still working as expected, at least for me. :)
+2019-10-21:
+Updated to the latest version of Adobe AIR SDK 33 and Google Play Services 11.0.4.
+32-bit version works fine. I have no 64-bit Android device, to test 64-bit version.
 
 # About
 ANEAdMob is an Adobe AIR native extension (ANE) for Android to show ads.<br />
@@ -86,8 +88,5 @@ _admob.setVolume(vol); //0-1 range, where 0 - mute, 1 - max volume (default, I g
 ```
 
 # Games with AdMob
-https://play.google.com/store/apps/details?id=air.com.pozirk.allinonesolitaire<br />
-https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong<br />
-https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong2<br />
-https://play.google.com/store/apps/details?id=air.com.pozirk.allinonemahjong3<br />
+https://play.google.com/store/apps/details?id=air.com.pozirk.allinonesolitaire.old<br />
 In order to see the interstitial ad, you need to win/lose any game.<br />

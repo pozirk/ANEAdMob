@@ -1,8 +1,8 @@
 <extension xmlns="http://ns.adobe.com/air/extension/33.0">
   <id>com.pozirk.ads.AdMob</id>
   <versionNumber>1</versionNumber>
-  <platforms>
-    <platform name="Android-ARM">
+  <platforms>		
+		<platform name="Android-ARM64">
       <applicationDeployment>
         <nativeLibrary>libAdMob.jar</nativeLibrary>
         <initializer>com.pozirk.ads.admob.Extension</initializer>
