@@ -1,7 +1,8 @@
 # News
-2019-10-21:
+2020-01-29:
 Updated to the latest version of Adobe AIR SDK 33 and Google Play Services 11.0.4.
-32-bit version works fine. I have no 64-bit Android device, to test 64-bit version.
+32-bit version works fine.
+64-bit ANE was tested by some good guy, and he told me it worked fine too. :)
 
 # About
 ANEAdMob is an Adobe AIR native extension (ANE) for Android to show ads.<br />
