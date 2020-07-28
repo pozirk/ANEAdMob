@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package com.pozirk.ads.admob;
+package com.pozirk.ads.admob.function;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
+import com.pozirk.ads.admob.context.ExtensionContext;
 
 public class HideFunction
   implements FREFunction

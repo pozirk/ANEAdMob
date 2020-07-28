@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package com.pozirk.ads.admob;
+package com.pozirk.ads.admob.listener;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.pozirk.ads.admob.context.ExtensionContext;
 
 public class AdMobListener extends AdListener
 {

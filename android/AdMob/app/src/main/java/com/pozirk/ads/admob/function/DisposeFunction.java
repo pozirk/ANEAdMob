@@ -14,30 +14,21 @@
  * limitations under the License.
  */
 
-package com.pozirk.ads.admob;
+package com.pozirk.ads.admob.function;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
+import com.pozirk.ads.admob.context.ExtensionContext;
 
-public class CacheInterstitialFunction
+public class DisposeFunction
   implements FREFunction
 {
-	public FREObject call(FREContext frectx, FREObject[] args)
+  public FREObject call(FREContext frectx, FREObject[] args)
   {
   	ExtensionContext ctx = (ExtensionContext)frectx;
 
-  	try
-    {
-  		FREObject adID = args[0];
-    	FREObject testDevice = args[1];
-    	ctx.getAdMobMan().cacheInterstitial(adID.getAsString(), (testDevice != null ? testDevice.getAsString() : null));
-    }
-  	catch(Exception e)
-    {
-    	e.printStackTrace();
-    	ctx.dispatchStatusEventAsync("INTERSTITIAL_CACHE_FAIL", e.getMessage());
-    }
+  	ctx.dispose();
 
   	return null;
   }

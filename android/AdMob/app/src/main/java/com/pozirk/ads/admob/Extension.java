@@ -18,9 +18,9 @@ package com.pozirk.ads.admob;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREExtension;
+import com.pozirk.ads.admob.context.ExtensionContext;
 
-public class Extension
-  implements FREExtension
+public class Extension implements FREExtension
 {
   public FREContext createContext(String contextType)
   {

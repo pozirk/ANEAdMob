@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.pozirk.ads.admob;
+package com.pozirk.ads.admob.manager;
 
 import android.app.Activity;
 //import android.util.Log;
@@ -26,6 +26,8 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.pozirk.ads.admob.context.ExtensionContext;
+import com.pozirk.ads.admob.listener.AdMobListener;
 
 public class AdMobManager
 {

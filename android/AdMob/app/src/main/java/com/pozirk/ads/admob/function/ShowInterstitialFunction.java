@@ -14,33 +14,21 @@
  * limitations under the License.
  */
 
-package com.pozirk.ads.admob;
+package com.pozirk.ads.admob.function;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
+import com.pozirk.ads.admob.context.ExtensionContext;
 
-public class ShowFunction implements FREFunction
-{
-  public FREObject call(FREContext frectx, FREObject[] args)
+public class ShowInterstitialFunction
+  implements FREFunction
+{	
+	public FREObject call(FREContext frectx, FREObject[] args)
   {
   	ExtensionContext ctx = (ExtensionContext)frectx;
 
-  	try
-    {
-  		FREObject adID = args[0];
-    	FREObject size = args[1];
-    	FREObject halign = args[2];
-    	FREObject valign = args[3];
-    	FREObject testDevice = args[4];
-    	
-    	ctx.getAdMobMan().show(adID.getAsString(), size.getAsInt(), halign.getAsInt(), valign.getAsInt(), (testDevice != null ? testDevice.getAsString() : null));
-    }
-  	catch(Exception e)
-    {
-    	e.printStackTrace();
-    	ctx.dispatchStatusEventAsync("BANNER_SHOW_FAIL", e.getMessage());
-    }
+  	ctx.getAdMobMan().showInterstitial();
 
   	return null;
   }
