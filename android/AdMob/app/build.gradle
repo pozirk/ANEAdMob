@@ -1,0 +1,25 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 28
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    implementation files("$System.env.AIR_HOME/lib/android/FlashRuntimeExtensions.jar")
+    implementation files('libs/google-play-services.jar')
+
+
+}
