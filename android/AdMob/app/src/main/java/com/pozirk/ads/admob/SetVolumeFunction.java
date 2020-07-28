@@ -30,7 +30,7 @@ public class SetVolumeFunction
   	try
     {
   		FREObject vol = args[0];
-    	ctx._adMobMan.setVolume(vol.getAsDouble());
+    	ctx.getAdMobMan().setVolume(vol.getAsDouble());
     }
   	catch(Exception e)
     {

@@ -27,7 +27,7 @@ public class ShowInterstitialFunction
   {
   	ExtensionContext ctx = (ExtensionContext)frectx;
 
-  	ctx._adMobMan.showInterstitial();
+  	ctx.getAdMobMan().showInterstitial();
 
   	return null;
   }

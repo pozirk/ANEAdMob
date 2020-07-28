@@ -27,8 +27,7 @@ public class DisposeFunction
   {
   	ExtensionContext ctx = (ExtensionContext)frectx;
 
-  	ctx._adMobMan.dispose();
-  	ctx._adMobMan = null;
+  	ctx.dispose();
 
   	return null;
   }

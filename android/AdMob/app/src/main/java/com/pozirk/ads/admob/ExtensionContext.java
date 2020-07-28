@@ -23,10 +23,16 @@ import java.util.Map;
 
 public class ExtensionContext extends FREContext
 {
-  public AdMobManager _adMobMan = null;
+  private AdMobManager _adMobMan;
+
+  public ExtensionContext() {
+  	_adMobMan = new AdMobManager(this.getActivity(), this);
+  }
 
   public void dispose()
   {
+  	_adMobMan.dispose();
+  	_adMobMan = null;
   }
 
   public Map<String, FREFunction> getFunctions()
@@ -43,4 +49,8 @@ public class ExtensionContext extends FREContext
 
   	return functionMap;
   }
+
+	public AdMobManager getAdMobMan() {
+		return _adMobMan;
+	}
 }

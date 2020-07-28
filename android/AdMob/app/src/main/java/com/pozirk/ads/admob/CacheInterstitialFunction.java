@@ -31,7 +31,7 @@ public class CacheInterstitialFunction
     {
   		FREObject adID = args[0];
     	FREObject testDevice = args[1];
-    	ctx._adMobMan.cacheInterstitial(adID.getAsString(), (testDevice != null ? testDevice.getAsString() : null));
+    	ctx.getAdMobMan().cacheInterstitial(adID.getAsString(), (testDevice != null ? testDevice.getAsString() : null));
     }
   	catch(Exception e)
     {

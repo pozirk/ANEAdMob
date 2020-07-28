@@ -16,7 +16,6 @@
 
 package com.pozirk.ads.admob;
 
-import android.app.Activity;
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
@@ -27,13 +26,15 @@ public class InitFunction
   public FREObject call(FREContext frectx, FREObject[] args)
   {
   	ExtensionContext ctx = (ExtensionContext)frectx;
-  	Activity act = ctx.getActivity();
 
     try
     {
-   		ctx._adMobMan = new AdMobManager(act, ctx);
-    	
-    	ctx.dispatchStatusEventAsync("INIT_OK", "");
+        if(ctx.getAdMobMan()!=null) {
+            ctx.dispatchStatusEventAsync("INIT_OK", "");
+        }
+        else {
+            throw new RuntimeException("AdMobManager is null");
+        }
     }
     catch(Exception e)
     {

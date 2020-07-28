@@ -35,7 +35,7 @@ public class AdMobListener extends AdListener
 	 {
 		 if(_who == "BANNER")
 		 {
-			 _ctx._adMobMan.bannerOnTop();
+			 _ctx.getAdMobMan().bannerOnTop();
 			 _ctx.dispatchStatusEventAsync(_who+"_SHOW_OK", "");
 		 }
 		 else

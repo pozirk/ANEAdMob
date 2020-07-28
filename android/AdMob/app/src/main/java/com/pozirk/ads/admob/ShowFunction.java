@@ -34,7 +34,7 @@ public class ShowFunction implements FREFunction
     	FREObject valign = args[3];
     	FREObject testDevice = args[4];
     	
-    	ctx._adMobMan.show(adID.getAsString(), size.getAsInt(), halign.getAsInt(), valign.getAsInt(), (testDevice != null ? testDevice.getAsString() : null));
+    	ctx.getAdMobMan().show(adID.getAsString(), size.getAsInt(), halign.getAsInt(), valign.getAsInt(), (testDevice != null ? testDevice.getAsString() : null));
     }
   	catch(Exception e)
     {

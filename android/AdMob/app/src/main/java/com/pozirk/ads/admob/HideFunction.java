@@ -27,7 +27,7 @@ public class HideFunction
   {
   	ExtensionContext ctx = (ExtensionContext)frectx;
 
-	ctx._adMobMan.hide();
+	ctx.getAdMobMan().hide();
 
 	return null;
   }
