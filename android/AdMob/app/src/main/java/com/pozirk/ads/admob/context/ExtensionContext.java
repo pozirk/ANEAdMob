@@ -34,10 +34,6 @@ public class ExtensionContext extends FREContext
 {
   private AdMobManager _adMobMan;
 
-  public ExtensionContext() {
-  	_adMobMan = new AdMobManager(this.getActivity(), this);
-  }
-
   public void dispose()
   {
   	_adMobMan.dispose();
@@ -60,6 +56,9 @@ public class ExtensionContext extends FREContext
   }
 
 	public AdMobManager getAdMobMan() {
+		if(_adMobMan==null) {
+			_adMobMan = new AdMobManager(getActivity(), this);
+		}
 		return _adMobMan;
 	}
 }
