@@ -5,7 +5,8 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.kezong:fat-aar:1.2.15'
     }
 }
 
