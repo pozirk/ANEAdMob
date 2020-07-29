@@ -6,22 +6,15 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 28
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-        }
     }
 }
 
-configurations.embed.transitive = true
+configurations.embed.transitive = true //this is necessary to export all dependencies using FAT-AAR plugin
 
 dependencies {
     implementation files("$System.env.AIR_HOME/lib/android/FlashRuntimeExtensions.jar")
-    embed 'com.google.android.gms:play-services-ads:11.0.2'
+    embed 'com.google.android.gms:play-services-ads:11.0.2' //ATTENTION: Use embed (from FAT-AAR plugin) instead of implementation
 
 }
