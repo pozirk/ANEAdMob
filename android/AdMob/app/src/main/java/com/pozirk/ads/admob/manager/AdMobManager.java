@@ -70,11 +70,7 @@ public class AdMobManager
   	_adView.setAdUnitId(adID);
   	_adView.setAdSize(_adSize);
   	
-  	AdRequest adRequest = null;
-  	if(testDevice == null) //no test device
-  		adRequest = new AdRequest.Builder().build();
-  	else
-  		adRequest = new AdRequest.Builder().addTestDevice(testDevice).build(); //eto pizdec
+  	AdRequest adRequest = new AdRequest.Builder().build();
   	
   	_adView.setAdListener(new AdMobListener(_ctx, "BANNER"));
   	
@@ -115,12 +111,8 @@ public class AdMobManager
   	_interstitial = new InterstitialAd(_act);
   	_interstitial.setAdUnitId(adID);
 
-  	AdRequest adRequest = null;
-  	if(testDevice == null) //no test device
-  		adRequest = new AdRequest.Builder().build();
-  	else
-  		adRequest = new AdRequest.Builder().addTestDevice(testDevice).build(); //eto pizdec
-  	
+  	AdRequest adRequest = new AdRequest.Builder().build();
+
   	_interstitial.loadAd(adRequest);
   	_interstitial.setAdListener(new AdMobListener(_ctx, "INTERSTITIAL"));
   }

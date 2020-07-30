@@ -8,8 +8,8 @@ mkdir android\AdMob\app\build\outputs\aar\temp
 
 %SEVEN_ZIP% x android\AdMob\app\build\outputs\aar\*.aar -oandroid\AdMob\app\build\outputs\aar\temp -y
 
-copy android\AdMob\app\build\outputs\aar\*.jar android\AdMob\build\temp
-copy android\AdMob\app\build\outputs\aar\libs\*.jar android\AdMob\build\temp
+copy android\AdMob\app\build\outputs\aar\temp\*.jar android\AdMob\build\temp
+copy android\AdMob\app\build\outputs\aar\temp\libs\*.jar android\AdMob\build\temp
 
 del android\AdMob\build\temp\FlashRuntimeExtensions.jar
 
@@ -19,7 +19,11 @@ del android\AdMob\build\temp\*.jar
 
 del android\AdMob\build\*.jar
 
-%SEVEN_ZIP% a android\AdMob\build\libAdMob.jar android\AdMob\build\temp\*
+cd android\AdMob\build\temp
+
+%SEVEN_ZIP% a ..\libAdMob.jar *
+
+cd ..\..\..\..
 
 del /f/q/s android\AdMob\build\temp
 

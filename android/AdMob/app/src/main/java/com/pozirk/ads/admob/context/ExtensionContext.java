@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class ExtensionContext extends FREContext
 {
-  private AdMobManager _adMobMan;
+  private static AdMobManager _adMobMan;
 
   public void dispose()
   {
@@ -57,7 +57,13 @@ public class ExtensionContext extends FREContext
 
 	public AdMobManager getAdMobMan() {
 		if(_adMobMan==null) {
-			_adMobMan = new AdMobManager(getActivity(), this);
+
+//			try {
+				_adMobMan = new AdMobManager(getActivity(), this);
+//			}
+//			catch(Exception e) {
+//				dispatchStatusEventAsync("INIT_FAIL", e.getMessage());
+//			}
 		}
 		return _adMobMan;
 	}
