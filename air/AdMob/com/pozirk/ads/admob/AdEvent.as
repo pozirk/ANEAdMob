@@ -38,6 +38,14 @@ package com.pozirk.ads.admob
 		public static const INTERSTITIAL_CACHE_FAIL:String = "INTERSTITIAL_CACHE_FAIL";
 		public static const INTERSTITIAL_OPENED:String = "INTERSTITIAL_OPENED";
 		public static const INTERSTITIAL_CLOSED:String = "INTERSTITIAL_CLOSED";
+		public static const REWARDED_CACHE_OK:String = "REWARDED_CACHE_OK";		
+		public static const REWARDED_OPENED:String = "REWARDED_OPENED";
+		public static const REWARDED_CLOSED:String = "REWARDED_CLOSED";		
+		public static const REWARDED_LEFT_APP:String = "REWARDED_LEFT_APP"; 
+		public static const REWARDED_CACHE_FAIL:String = "REWARDED_CACHE_FAIL";		
+		public static const REWARDED_STARTED:String = "REWARDED_STARTED"; 
+		public static const REWARDED_REWARDED:String = "REWARDED_REWARDED"; //value rewardItem.getType()+"-"+rewardItem.getAmount()
+		public static const REWARDED_COMPLETED:String = "REWARDED_COMPLETED";
 		
 		public var _data:String; //extra info about event
 		

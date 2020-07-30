@@ -1,4 +1,10 @@
 # News
+2020-07-30
+Rewarded videos <br/>
+Support for AndroidStudio with Gradle <br/>
+Batch file to build SWC and JAR <br/>
+Updated to the latest version of Adobe AIR SDK 33 and Google Play Services 16.0.0.<br />
+
 2020-01-29:
 Updated to the latest version of Adobe AIR SDK 33 and Google Play Services 11.0.4.<br />
 32-bit version works fine.<br />
@@ -9,9 +15,11 @@ ANEAdMob is an Adobe AIR native extension (ANE) for Android to show ads.<br />
 Supported functionality:<br />
 - show ad;<br />
 - cache interstitial ad;<br />
+- cache rewarded video ad;
 - show interstitial ad;<br />
+- show rewarded video ad;<br />
 - hide ad;<br />
-- listen tap, close, leave, etc. event.<br />
+- listen tap, close, leave, rewarded, failed, etc. event.<br />
 
 # Docs
 Please, read docs and try ANE before asking any questions.<br />
@@ -28,7 +36,7 @@ Add the following lines to your AIR Aplication-app.xml file inside &lt;manifestA
 &lt;uses-permission android:name="android.permission.INTERNET"/&gt;<br />
 &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;<br />
 &lt;application&gt;<br />
-&lt;meta-data android:name="com.google.android.gms.version" android:value="11020000" /&gt;<br />
+&lt;meta-data android:name="com.google.android.gms.version" android:value="12451000" /&gt;<br />
 &lt;activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/&gt;<br />
 &lt;/application&gt;<br />
 &lt;/manifest>]]&gt;
@@ -61,6 +69,14 @@ _admob.addEventListener(AdEvent.INTERSTITIAL_CACHE_FAIL, onEvent);
 _admob.addEventListener(AdEvent.INTERSTITIAL_LEFT_APP, onEvent);
 _admob.addEventListener(AdEvent.INTERSTITIAL_OPENED, onEvent);
 _admob.addEventListener(AdEvent.INTERSTITIAL_CLOSED, onEvent);
+_admob.addEventListener(AdEvent.REWARDED_CACHE_FAIL, onEvent);
+_admob.addEventListener(AdEvent.REWARDED_CACHE_OK, onEvent);
+_admob.addEventListener(AdEvent.REWARDED_CLOSED, onEvent);
+_admob.addEventListener(AdEvent.REWARDED_COMPLETED, onEvent);
+_admob.addEventListener(AdEvent.REWARDED_LEFT_APP, onEvent);
+_admob.addEventListener(AdEvent.REWARDED_OPENED, onEvent);
+_admob.addEventListener(AdEvent.REWARDED_REWARDED, onEvent);
+_admob.addEventListener(AdEvent.REWARDED_STARTED, onEvent);
 _admob.init();
 
 ...
@@ -73,17 +89,29 @@ protected function onEvent(ae:AdEvent):void
 
 
 //showing smart-size ad at the bottom center side of the screen
-_admob.show("AD_UNIT_ID", AdParams.SIZE_SMART_BANNER, AdParams.HALIGN_CENTER, AdParams.VALIGN_BOTTOM);
+//Admob official test ad unit for  banner "ca-app-pub-3940256099942544/6300978111"
+_admob.show("AD_UNIT_ID", AdParams.SIZE_SMART_BANNER, AdParams.HALIGN_CENTER, AdParams.VALIGN_BOTTOM); 
 
 //hiding ad
 _admob.hide();
 
 //caching interstitial ad
-_admob.cacheInterstitial("AD_UNIT_ID");
+//Official test ad unit for interstitial "ca-app-pub-3940256099942544/1033173712"
+_admob.cacheInterstitial("AD_UNIT_ID"); 
 ...
 //showing interstitial ad, make sure it's cached first
 _admob.showInterstitial();
 ...
+
+
+//caching rewarded ad
+//Official test ad unit for rewarded "ca-app-pub-3940256099942544/5224354917"
+_admob.cacheRewarded("AD_UNIT_ID");  
+...
+//showing rewarded ad, make sure it's cached first
+_admob.showRewarded();
+...
+
 //setting volume of the interstitial ad, can have sound, if it's video
 _admob.setVolume(vol); //0-1 range, where 0 - mute, 1 - max volume (default, I guess).
 ```

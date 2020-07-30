@@ -209,3 +209,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+android/AdMob/app/build/
+android/AdMob/.gradle/
+android/AdMob/.idea/

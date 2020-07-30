@@ -1,0 +1,1 @@
+"%AIR_HOME%\bin\acompc.bat" --source-path air\AdMob -include-classes com.pozirk.ads.admob.AdEvent com.pozirk.ads.admob.AdParams com.pozirk.ads.admob.AdMob -swf-version=13 -output air\AdMob\bin\AdMob.swc
