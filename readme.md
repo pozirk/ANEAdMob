@@ -4,6 +4,7 @@ Rewarded videos <br/>
 Support for AndroidStudio with Gradle <br/>
 Batch file to build SWC and JAR <br/>
 Updated to the latest version of Adobe AIR SDK 33 and Google Play Services 16.0.0.<br />
+Big thanks to [@luc4smoreira](https://github.com/luc4smoreira) for this update!<br />
 
 2020-01-29:
 Updated to the latest version of Adobe AIR SDK 33 and Google Play Services 11.0.4.<br />
