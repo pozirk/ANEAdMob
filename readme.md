@@ -1,6 +1,12 @@
 # News
-2020-01-29:
+2020-07-30
+Rewarded videos <br/>
+Support for AndroidStudio with Gradle <br/>
+Batch file to build SWC and JAR <br/>
 Updated to the latest version of Adobe AIR SDK 33 and Google Play Services 16.0.0.<br />
+
+2020-01-29:
+Updated to the latest version of Adobe AIR SDK 33 and Google Play Services 11.0.4.<br />
 32-bit version works fine.<br />
 64-bit ANE was tested by some good guy, and he told me it worked fine too. :)
 
