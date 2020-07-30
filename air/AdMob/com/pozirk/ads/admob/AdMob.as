@@ -91,6 +91,26 @@ package com.pozirk.ads.admob
 			_ctx.call("showInterstitial");
 		}
 		
+		
+		/**
+		 * Cache rewarded ad, listen for AdEvent.REWARDED_CACHE_OK before showing it
+		 * @param	adID - Ad unit ID
+		 * @param	testDevice - device ID
+		 */
+		public function cacheRewarded(adID:String, testDevice:String = null):void
+		{
+			_ctx.call("cacheRewarded", adID, testDevice);
+		}
+
+		/**
+		 * Show rewarded ad, if it is not cached yet, nothing will be shown
+		 */
+		public function showRewarded():void
+		{
+			_ctx.call("showRewarded");
+		}
+		
+		
 		/**
 		 * Mute/unmute sound
 		 */
@@ -183,11 +203,68 @@ package com.pozirk.ads.admob
 					break;
 				}
 				
+				
+				
+				
+				
+				case "REWARDED_CACHE_OK":
+				{
+					e = new AdEvent(AdEvent.REWARDED_CACHE_OK);
+					break;
+				}
+				
+				
+				case "REWARDED_OPENED":
+				{
+					e = new AdEvent(AdEvent.INTERSTITIAL_CLOSED);
+					break;
+				}
+				
 				case "INTERSTITIAL_CLOSED":
 				{
 					e = new AdEvent(AdEvent.INTERSTITIAL_CLOSED);
 					break;
 				}
+				
+				case "REWARDED_LEFT_APP":
+				{
+					e = new AdEvent(AdEvent.REWARDED_LEFT_APP);
+					break;
+				}
+				
+				case "REWARDED_CLOSED":
+				{
+					e = new AdEvent(AdEvent.REWARDED_CLOSED);
+					break;
+				}
+				
+				case "REWARDED_CACHE_FAIL":
+				{
+					e = new AdEvent(AdEvent.REWARDED_CACHE_FAIL);
+					break;
+				}
+				
+				case "REWARDED_STARTED":
+				{
+					e = new AdEvent(AdEvent.REWARDED_STARTED);
+					break;
+				}
+				
+				case "REWARDED_REWARDED":
+				{					
+					e = new AdEvent(AdEvent.REWARDED_REWARDED, event.level); //rewardItem.getType()+"-"+rewardItem.getAmount()
+					break;
+				}
+				
+				case "REWARDED_COMPLETED":
+				{
+					e = new AdEvent(AdEvent.REWARDED_COMPLETED);
+					break;
+				}
+		
+				
+				
+				
 			}
 			
 			if(e != null)

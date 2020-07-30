@@ -18,30 +18,33 @@ package com.pozirk.ads.admob.listener;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.pozirk.ads.admob.manager.AdTypesSupportedEnum;
 import com.pozirk.ads.admob.context.ExtensionContext;
 
 public class AdMobListener extends AdListener
 {
-	protected ExtensionContext _ctx = null;
-	protected String _who = null;
+	protected ExtensionContext _ctx ;
+	protected AdTypesSupportedEnum _who;
 	
-	public AdMobListener(ExtensionContext ctx, String who)
+	public AdMobListener(ExtensionContext ctx, AdTypesSupportedEnum type)
 	{
 		_ctx = ctx;
-		_who = who;
+		_who = type;
 	}
 	
-	 @Override
-   public void onAdLoaded()
-	 {
-		 if(_who == "BANNER")
-		 {
-			 _ctx.getAdMobMan().bannerOnTop();
-			 _ctx.dispatchStatusEventAsync(_who+"_SHOW_OK", "");
-		 }
-		 else
-			 _ctx.dispatchStatusEventAsync(_who+"_CACHE_OK", "");
-   }
+    @Override
+    public void onAdLoaded()
+    {
+        if(_who == AdTypesSupportedEnum.BANNER)
+        {
+            _ctx.getAdMobMan().bannerOnTop();
+            _ctx.dispatchStatusEventAsync(_who.getType()+"_SHOW_OK", "");
+        }
+        else {
+            _ctx.dispatchStatusEventAsync(_who.getType()+"_CACHE_OK", "");
+        }
+
+    }
 
    @Override
    public void onAdFailedToLoad(int errorCode)
@@ -63,27 +66,29 @@ public class AdMobListener extends AdListener
          break;
      }
     
-     if(_who == "BANNER")
-    	 _ctx.dispatchStatusEventAsync(_who+"_SHOW_FAIL", errorReason);
-     else
-    	 _ctx.dispatchStatusEventAsync(_who+"_CACHE_FAIL", errorReason);
+     if(_who == AdTypesSupportedEnum.BANNER) {
+         _ctx.dispatchStatusEventAsync(_who.getType() + "_SHOW_FAIL", errorReason);
+     }
+     else {
+         _ctx.dispatchStatusEventAsync(_who.getType() + "_CACHE_FAIL", errorReason);
+     }
    }
 
    @Override
    public void onAdOpened()
    {
-  	 _ctx.dispatchStatusEventAsync(_who+"_OPENED", "So, you've just earned some money, huh?");
+  	 _ctx.dispatchStatusEventAsync(_who.getType()+"_OPENED", "So, you've just earned some money, huh?");
    }
 
    @Override
    public void onAdClosed()
    {
-  	 _ctx.dispatchStatusEventAsync(_who+"_CLOSED", "");
+  	 _ctx.dispatchStatusEventAsync(_who.getType()+"_CLOSED", "");
    }
    
    @Override
    public void onAdLeftApplication()
    {
-  	 _ctx.dispatchStatusEventAsync(_who+"_LEFT_APP", "");
+  	 _ctx.dispatchStatusEventAsync(_who.getType()+"_LEFT_APP", "");
    }
 }

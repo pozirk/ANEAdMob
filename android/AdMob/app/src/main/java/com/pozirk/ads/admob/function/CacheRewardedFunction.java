@@ -21,7 +21,7 @@ import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 import com.pozirk.ads.admob.context.ExtensionContext;
 
-public class CacheInterstitialFunction implements FREFunction
+public class CacheRewardedFunction implements FREFunction
 {
 	public FREObject call(FREContext frectx, FREObject[] args)
   {
@@ -30,13 +30,13 @@ public class CacheInterstitialFunction implements FREFunction
   	try
     {
   		FREObject adID = args[0];
-    	FREObject testDevice = args[1];
-    	ctx.getAdMobMan().cacheInterstitial(adID.getAsString(), (testDevice != null ? testDevice.getAsString() : null));
+		FREObject testDevice = args[1];
+    	ctx.getAdMobMan().cacheRewarded(adID.getAsString(), (testDevice != null ? testDevice.getAsString() : null));
     }
   	catch(Exception e)
     {
     	e.printStackTrace();
-    	ctx.dispatchStatusEventAsync("INTERSTITIAL_CACHE_FAIL", e.getMessage());
+    	ctx.dispatchStatusEventAsync("REWARDED_CACHE_FAIL", e.getMessage());
     }
 
   	return null;

@@ -18,6 +18,8 @@ package com.pozirk.ads.admob.context;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
+import com.pozirk.ads.admob.function.CacheRewardedFunction;
+import com.pozirk.ads.admob.function.ShowRewardedFunction;
 import com.pozirk.ads.admob.manager.AdMobManager;
 import com.pozirk.ads.admob.function.CacheInterstitialFunction;
 import com.pozirk.ads.admob.function.DisposeFunction;
@@ -49,6 +51,9 @@ public class ExtensionContext extends FREContext
   	functionMap.put("hide", new HideFunction());
   	functionMap.put("cacheInterstitial", new CacheInterstitialFunction());
   	functionMap.put("showInterstitial", new ShowInterstitialFunction());
+	functionMap.put("cacheRewarded", new CacheRewardedFunction());
+	functionMap.put("showRewarded", new ShowRewardedFunction());
+
   	functionMap.put("dispose", new DisposeFunction());
   	functionMap.put("setVolume", new SetVolumeFunction());
 
@@ -57,13 +62,7 @@ public class ExtensionContext extends FREContext
 
 	public AdMobManager getAdMobMan() {
 		if(_adMobMan==null) {
-
-//			try {
-				_adMobMan = new AdMobManager(getActivity(), this);
-//			}
-//			catch(Exception e) {
-//				dispatchStatusEventAsync("INIT_FAIL", e.getMessage());
-//			}
+			_adMobMan = new AdMobManager(this);
 		}
 		return _adMobMan;
 	}

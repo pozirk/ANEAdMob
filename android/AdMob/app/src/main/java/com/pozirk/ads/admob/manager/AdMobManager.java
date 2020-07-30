@@ -16,8 +16,6 @@
 
 package com.pozirk.ads.admob.manager;
 
-import android.app.Activity;
-//import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
@@ -26,115 +24,153 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.pozirk.ads.admob.context.ExtensionContext;
 import com.pozirk.ads.admob.listener.AdMobListener;
+import com.pozirk.ads.admob.listener.AdMobRewardedListener;
+
+//import android.util.Log;
 
 public class AdMobManager
 {
-  protected AdView _adView = null;
-  protected AdSize _adSize = AdSize.BANNER;
-  protected RelativeLayout _parentView;
-  protected Activity _act;
-  protected ExtensionContext _ctx;
-  protected InterstitialAd _interstitial;
-  protected RelativeLayout.LayoutParams _params;
+	private AdView _adView = null;
+	private AdSize _adSize = AdSize.BANNER;
+	private RelativeLayout _parentView;
+	private ExtensionContext _ctx;
+	private InterstitialAd _interstitial;
+	private RewardedVideoAd _rewardedVideoAd;
+	private RelativeLayout.LayoutParams _params;
 
-  public AdMobManager(Activity act, ExtensionContext ctx)
-  {
-	  _act = act;
-	  _ctx = ctx;
-	  
-	  MobileAds.initialize(_act);
+	public AdMobManager(ExtensionContext ctx)
+	{
+		_ctx = ctx;
 
-	  RelativeLayout layout = new RelativeLayout(_act);
-	  _act.addContentView(layout, new ViewGroup.LayoutParams(-1, -1));
+		MobileAds.initialize(ctx.getActivity());
 
-	  _parentView = layout;
-  }
-  
-  public void show(String adID, int size, /*int autoHW,*/ int halign, int valign, String testDevice)
-  {
-  	hide();
-  	
-  	switch(size)
-  	{
-  	case 1: _adSize = AdSize.BANNER; break; //set by default, but leave it here for reference
-  	case 2: _adSize = AdSize.MEDIUM_RECTANGLE; break;
-  	case 3: _adSize = AdSize.FULL_BANNER; break;
-  	case 4: _adSize = AdSize.LEADERBOARD; break;
-  	case 5: _adSize = AdSize.SMART_BANNER; break;
-  	case 6: _adSize = AdSize.WIDE_SKYSCRAPER; break;
-  	}
-  	
-  	_adView = new AdView(_act);
-  	_adView.setAdUnitId(adID);
-  	_adView.setAdSize(_adSize);
-  	
-  	AdRequest adRequest = new AdRequest.Builder().build();
-  	
-  	_adView.setAdListener(new AdMobListener(_ctx, "BANNER"));
-  	
-  	_params = new RelativeLayout.LayoutParams(-2, -2);
-  	_params.addRule(halign, -1);
-  	_params.addRule(valign, -1);
-  	
-  	_parentView.addView(_adView, _params);
-		
+		RelativeLayout layout = new RelativeLayout(ctx.getActivity());
+		ctx.getActivity().addContentView(layout, new ViewGroup.LayoutParams(-1, -1));
+
+		_parentView = layout;
+	}
+
+	public void show(String adID, int size, /*int autoHW,*/ int halign, int valign, String testDevice)
+	{
+		hide();
+
+		switch(size)
+		{
+		case 1: _adSize = AdSize.BANNER; break; //set by default, but leave it here for reference
+		case 2: _adSize = AdSize.MEDIUM_RECTANGLE; break;
+		case 3: _adSize = AdSize.FULL_BANNER; break;
+		case 4: _adSize = AdSize.LEADERBOARD; break;
+		case 5: _adSize = AdSize.SMART_BANNER; break;
+		case 6: _adSize = AdSize.WIDE_SKYSCRAPER; break;
+		}
+
+		_adView = new AdView(_ctx.getActivity());
+		_adView.setAdUnitId(adID);
+		_adView.setAdSize(_adSize);
+
+		AdRequest adRequest = createAdRequest(testDevice);
+
+		_adView.setAdListener(new AdMobListener(_ctx, AdTypesSupportedEnum.BANNER));
+
+		_params = new RelativeLayout.LayoutParams(-2, -2);
+		_params.addRule(halign, -1);
+		_params.addRule(valign, -1);
+
+		_parentView.addView(_adView, _params);
+
 		_adView.loadAd(adRequest);
-  }
-  
-  /**
-   * Required to fix this problem: https://groups.google.com/forum/#!topic/google-admob-ads-sdk/avwVXvBt_sM
-   */
-  public void bannerOnTop()
-  {
-  	if(_adView != null)
+	}
+
+	/**
+	* Required to fix this problem: https://groups.google.com/forum/#!topic/google-admob-ads-sdk/avwVXvBt_sM
+	*/
+	public void bannerOnTop()
+	{
+		if(_adView != null) {
 			_parentView.bringToFront();
-  }
+		}
+	}
 
-  public void hide()
-  {
-  	if(_adView != null)
-  	{
-  		_adView.pause();
-  		_parentView.removeView(_adView);
-  		_adView.destroy();
-  	}
-  	
-  	_adView = null;
-  }
+	public void hide()
+	{
+		if(_adView != null)
+		{
+			_adView.pause();
+			_parentView.removeView(_adView);
+			_adView.destroy();
+		}
 
-  public void cacheInterstitial(String adID, String testDevice)
-  {
-  	//Log.d("SOLITAIRE", "CACHE");
-  	
-  	_interstitial = new InterstitialAd(_act);
-  	_interstitial.setAdUnitId(adID);
+		_adView = null;
+	}
 
-  	AdRequest adRequest = new AdRequest.Builder().build();
+	public void cacheInterstitial(String adID, String testDevice)
+	{
+		//Log.d("SOLITAIRE", "CACHE");
 
-  	_interstitial.loadAd(adRequest);
-  	_interstitial.setAdListener(new AdMobListener(_ctx, "INTERSTITIAL"));
-  }
-  
-  public void showInterstitial()
-  {
-  	//Log.d("SOLITAIRE", "SHOW");
-  	
-  	if(_interstitial != null && _interstitial.isLoaded() == true)
-  		_interstitial.show();
-  }
-  
-  public void setVolume(double vol)
-  {
-  	//Log.d("SOLITAIRE", "MUTE");
-  	MobileAds.setAppVolume((float)vol);
-  	//Log.d("SOLITAIRE MUTE", ""+vol);
-  }
+		_interstitial = new InterstitialAd(_ctx.getActivity());
+		_interstitial.setAdUnitId(adID);
 
-  public void dispose()
-  {
-  	hide();
-  	_adView.destroy();
-  }
+		AdRequest adRequest = createAdRequest(testDevice);
+
+		_interstitial.loadAd(adRequest);
+		_interstitial.setAdListener(new AdMobListener(_ctx, AdTypesSupportedEnum.INTERSTITIAL));
+	}
+
+	private AdRequest createAdRequest(String testDevice) {
+		AdRequest adRequest = null;
+		if(testDevice == null) //no test device
+			adRequest = new AdRequest.Builder().build();
+		else
+			adRequest = new AdRequest.Builder().addTestDevice(testDevice).build();
+
+		return adRequest;
+	}
+
+	public void showInterstitial()
+	{
+	//Log.d("SOLITAIRE", "SHOW");
+
+		if(_interstitial != null && _interstitial.isLoaded()) {
+			_interstitial.show();
+		}
+	}
+
+
+
+	public void cacheRewarded(String adId, String testDevice)
+	{
+		_rewardedVideoAd = MobileAds.getRewardedVideoAdInstance(_ctx.getActivity());
+		_rewardedVideoAd.setRewardedVideoAdListener(new AdMobRewardedListener(_ctx));
+
+		AdRequest adRequest = createAdRequest(testDevice);
+
+		_rewardedVideoAd.loadAd(adId, adRequest);
+
+
+	}
+
+
+	public void showRewarded() {
+		if (_rewardedVideoAd!=null && _rewardedVideoAd.isLoaded()) {
+			_rewardedVideoAd.show();
+		}
+	}
+
+	public void setVolume(double vol)
+	{
+		//Log.d("SOLITAIRE", "MUTE");
+		MobileAds.setAppVolume((float)vol);
+		//Log.d("SOLITAIRE MUTE", ""+vol);
+	}
+
+	public void dispose()
+	{
+		_rewardedVideoAd.destroy(_ctx.getActivity());
+		hide();
+		_adView.destroy();
+
+	}
 }
