@@ -24,21 +24,21 @@ import com.pozirk.ads.admob.context.ExtensionContext;
 public class CacheInterstitialFunction implements FREFunction
 {
 	public FREObject call(FREContext frectx, FREObject[] args)
-  {
-  	ExtensionContext ctx = (ExtensionContext)frectx;
+	{
+		ExtensionContext ctx = (ExtensionContext)frectx;
 
-  	try
-    {
-  		FREObject adID = args[0];
-    	FREObject testDevice = args[1];
-    	ctx.getAdMobMan().cacheInterstitial(adID.getAsString(), (testDevice != null ? testDevice.getAsString() : null));
-    }
-  	catch(Exception e)
-    {
-    	e.printStackTrace();
-    	ctx.dispatchStatusEventAsync("INTERSTITIAL_CACHE_FAIL", e.getMessage());
-    }
+		try
+		{
+			FREObject adID = args[0];
+			FREObject testDevice = args[1];
+			ctx.getAdMobMan().cacheInterstitial(adID.getAsString(), (testDevice != null ? testDevice.getAsString() : null));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			ctx.dispatchStatusEventAsync("INTERSTITIAL_CACHE_FAIL", e.getMessage());
+		}
 
-  	return null;
-  }
+	return null;
+	}
 }

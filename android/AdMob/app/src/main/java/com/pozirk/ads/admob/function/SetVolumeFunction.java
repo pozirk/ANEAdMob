@@ -21,8 +21,7 @@ import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 import com.pozirk.ads.admob.context.ExtensionContext;
 
-public class SetVolumeFunction
-  implements FREFunction
+public class SetVolumeFunction implements FREFunction
 {	
 	public FREObject call(FREContext frectx, FREObject[] args)
   {

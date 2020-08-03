@@ -15,5 +15,5 @@ configurations.embed.transitive = true //this is necessary to export all depende
 
 dependencies {
     implementation files("$System.env.AIR_HOME/lib/android/FlashRuntimeExtensions.jar")
-    embed 'com.google.android.gms:play-services-ads:16.0.0' //ATTENTION: Use embed (from FAT-AAR plugin) instead of implementation
+    embed 'com.google.android.gms:play-services-ads:19.3.0' //ATTENTION: Use embed (from FAT-AAR plugin) instead of implementation
 }
