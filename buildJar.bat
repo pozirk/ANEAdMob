@@ -1,5 +1,7 @@
 SET SEVEN_ZIP="C:\Program Files\7-Zip\7z.exe"
 
+del /f/q/s android\AdMob\build\res
+
 del /f/q/s android\AdMob\build\temp
 
 mkdir android\AdMob\build\temp
@@ -14,6 +16,8 @@ copy android\AdMob\app\build\outputs\aar\temp\libs\*.jar android\AdMob\build\tem
 del android\AdMob\build\temp\FlashRuntimeExtensions.jar
 
 %SEVEN_ZIP% x android\AdMob\build\temp\*.jar -oandroid\AdMob\build\temp -y
+
+xcopy android\AdMob\app\build\outputs\aar\app-debug\res android\AdMob\build\res\ /e
 
 del android\AdMob\build\temp\*.jar
 

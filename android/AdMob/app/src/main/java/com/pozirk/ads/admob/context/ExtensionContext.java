@@ -34,31 +34,31 @@ import java.util.Map;
 
 public class ExtensionContext extends FREContext
 {
-  private static AdMobManager _adMobMan;
+	private static AdMobManager _adMobMan;
 
-  public void dispose()
-  {
-  	_adMobMan.dispose();
-  	_adMobMan = null;
-  }
+	public void dispose()
+	{
+		_adMobMan.dispose();
+		_adMobMan = null;
+	}
 
-  public Map<String, FREFunction> getFunctions()
-  {
-  	Map<String, FREFunction> functionMap = new HashMap<String, FREFunction>();
+	public Map<String, FREFunction> getFunctions()
+	{
+		Map<String, FREFunction> functionMap = new HashMap<String, FREFunction>();
 
-  	functionMap.put("init", new InitFunction());
-  	functionMap.put("show", new ShowFunction());
-  	functionMap.put("hide", new HideFunction());
-  	functionMap.put("cacheInterstitial", new CacheInterstitialFunction());
-  	functionMap.put("showInterstitial", new ShowInterstitialFunction());
-	functionMap.put("cacheRewarded", new CacheRewardedFunction());
-	functionMap.put("showRewarded", new ShowRewardedFunction());
+		functionMap.put("init", new InitFunction());
+		functionMap.put("show", new ShowFunction());
+		functionMap.put("hide", new HideFunction());
+		functionMap.put("cacheInterstitial", new CacheInterstitialFunction());
+		functionMap.put("showInterstitial", new ShowInterstitialFunction());
+		functionMap.put("cacheRewarded", new CacheRewardedFunction());
+		functionMap.put("showRewarded", new ShowRewardedFunction());
 
-  	functionMap.put("dispose", new DisposeFunction());
-  	functionMap.put("setVolume", new SetVolumeFunction());
+		functionMap.put("dispose", new DisposeFunction());
+		functionMap.put("setVolume", new SetVolumeFunction());
 
-  	return functionMap;
-  }
+		return functionMap;
+	}
 
 	public AdMobManager getAdMobMan() {
 		if(_adMobMan==null) {

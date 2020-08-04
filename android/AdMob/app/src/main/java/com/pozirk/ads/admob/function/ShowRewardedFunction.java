@@ -21,8 +21,7 @@ import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 import com.pozirk.ads.admob.context.ExtensionContext;
 
-public class ShowRewardedFunction
-  implements FREFunction
+public class ShowRewardedFunction implements FREFunction
 {	
 	public FREObject call(FREContext frectx, FREObject[] args)
   {
