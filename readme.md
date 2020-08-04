@@ -2,6 +2,7 @@
 2020-08-03
 - Updated to the last version 19.3.0.<br />
 - Batch file to build ANE 32bits, 64 or 32&64bit versions as 1 ANE<br/>
+Big thanks to [@luc4smoreira](https://github.com/luc4smoreira) for this update!<br />
 
 2020-07-30
 - Rewarded videos <br/>
