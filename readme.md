@@ -128,6 +128,16 @@ _admob.showRewarded();
 _admob.setVolume(vol); //0-1 range, where 0 - mute, 1 - max volume (default, I guess).
 ```
 
+
+# Testing
+Ads might not show in debug version of the app or for new apps, that are not yet on Google Play or just created ad unit.<br />
+Always try test mode first by passing your device id as last parameter to show/cacheInterstitial function.<br />
+One of the ways to find device id is to run ads in regular mode and find the following line in logs: <To get test ads on this device, call adRequest.addTestDevice("XXX");>.
+XXX is your device id.<br />
+"No fill" or "Failed to load ad: 3" in logs most likely means that ads are working fine, but there are no ads for real, or admob doesn't want to provide any for some reason.<br />
+Listen to all the events while debuging to get better idea what is going on, when something is not working.
+
+
 # Games with AdMob
 https://play.google.com/store/apps/details?id=air.com.pozirk.allinonesolitaire.old<br />
 In order to see the interstitial ad, you need to win/lose any game.<br />
