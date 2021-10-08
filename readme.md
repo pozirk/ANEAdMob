@@ -136,8 +136,3 @@ One of the ways to find device id is to run ads in regular mode and find the fol
 XXX is your device id.<br />
 "No fill" or "Failed to load ad: 3" in logs most likely means that ads are working fine, but there are no ads for real, or admob doesn't want to provide any for some reason.<br />
 Listen to all the events while debuging to get better idea what is going on, when something is not working.
-
-
-# Games with AdMob
-https://play.google.com/store/apps/details?id=air.com.pozirk.allinonesolitaire.old<br />
-In order to see the interstitial ad, you need to win/lose any game.<br />
