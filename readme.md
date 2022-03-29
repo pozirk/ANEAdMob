@@ -1,4 +1,7 @@
 # News
+2022-03-29
+pozirk: I'm not using or updating this ANE anymore. Have no idea, if it's still working.
+
 2020-08-03
 - Updated to the last version 19.3.0.<br />
 - Batch file to build ANE 32bits, 64 or 32&64bit versions as 1 ANE<br/>
